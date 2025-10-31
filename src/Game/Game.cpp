@@ -5,22 +5,15 @@
 #include "Screen/Screen.h"
 #include "Game/GameScene/GameScene.h"
 
+using namespace gameScene;
+
 namespace game
 {
-	enum class gameScene
-	{
-		MainMenu,
-		Playing
-	};
-
 	static bool isGameRunning = true;
-	static gameScene currentScene = gameScene::MainMenu;
-
+	static GameScene currentScene = GameScene::Playing;
 	static float delta = 0.0f;
 
 	static void game();
-	static void update();
-	static void draw();
 
 	static void game()
 	{
@@ -30,49 +23,20 @@ namespace game
 		{
 			delta = GetFrameTime();
 
-			update();
-			draw();
+			switch (currentScene)
+			{
+			case gameScene::GameScene::MainMenu:
+				mainMenu::mainMenu();
+				break;
+			case gameScene::GameScene::Playing:
+				playing::playing(delta);
+				break;
+			default:
+				break;
+			}
 		}
 	}
 	
-	static void update()
-	{
-		switch (currentScene)
-		{
-		case game::gameScene::MainMenu:
-
-			break;
-
-		case game::gameScene::Playing:
-
-			break;
-
-		default:
-			break;
-		}
-	}
-
-	static void draw()
-	{
-		BeginDrawing();
-
-		switch (currentScene)
-		{
-		case game::gameScene::MainMenu:
-
-			break;
-
-		case game::gameScene::Playing:
-
-			break;
-
-		default:
-			break;
-		}
-
-		EndDrawing();
-	}
-
 	void runGame()
 	{
 		game();

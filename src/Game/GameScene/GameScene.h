@@ -2,7 +2,7 @@
 
 namespace gameScene
 {
-	enum class gameScene
+	enum class GameScene
 	{
 		MainMenu,
 		Playing
@@ -15,7 +15,7 @@ namespace gameScene
 
 	namespace playing
 	{
-		void playing();
+		void playing(float delta);
 	}
 }
 

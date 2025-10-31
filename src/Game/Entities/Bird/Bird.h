@@ -10,8 +10,8 @@ namespace bird
 	struct Bird
 	{
 		form::Circle hitbox;
-		Color color;
-		Vector2 velocity;
+		Color color = {};
+		Vector2 velocity = {};
 	};
 
 	Bird init();

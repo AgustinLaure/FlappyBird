@@ -6,25 +6,31 @@
 
 namespace bird
 {
-	static const Color birdIniColor = WHITE;
-	static const Vector2 birdHitboxIniPos = {0.0f, 0.0f};
-	static const float birdHitboxIniRadius = 5.0f;
-	static const Vector2 birdIniVel = birdConstVel;
 
-	static const float birdSpeed = 50.0f;
-	static const Vector2 birdConstVel = {-15.0f, 15.0f};
+	static const float birdSpeed = 300.0f;
+	static const float birdFallSpeed = 0.3f;
+	static const float birdFallSpeedCap = 1.0f;
 	static const KeyboardKey jumpButton = KEY_SPACE;
-	static float jumpSpeed = 10.0f;
+	static const Color birdIniColor = WHITE;
+	static const Vector2 birdHitboxIniPos = { 0.0f, 0.0f };
+	static const float birdHitboxIniRadius = 5.0f;
+	static const Vector2 birdIniVel = { 0,0 };
+
+	static float jumpSpeed = 500.0f;
 
 	static void move(Bird& bird, float delta);
 
 	static void move(Bird& bird, float delta)
 	{
-		bird.velocity = vector::getVectorMult(birdConstVel, delta);
-
-		if (IsKeyDown(jumpButton))
+		if (bird.velocity.y < birdFallSpeedCap)
 		{
-			bird.velocity.y += jumpSpeed * delta;
+			bird.velocity = vector::getVectorSum(bird.velocity, { 0, birdFallSpeed * delta });
+		}
+
+		if (IsKeyPressed(jumpButton))
+		{
+			bird.velocity.y = 0;
+			bird.velocity.y -= jumpSpeed * delta;
 		}
 
 		bird.hitbox.pos = vector::getVectorSum(bird.hitbox.pos, bird.velocity);
@@ -49,6 +55,6 @@ namespace bird
 
 	void draw(Bird bird)
 	{
-		DrawCircle(bird.hitbox.pos.x, bird.hitbox.pos.y, bird.hitbox.radius, bird.color);
+		DrawCircle(static_cast<int>(bird.hitbox.pos.x), static_cast<int>(bird.hitbox.pos.y), bird.hitbox.radius, bird.color);
 	}
 }
