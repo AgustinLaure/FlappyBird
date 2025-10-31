@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{c8891c82-dd9c-477b-86d3-4183754e9151}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game">
+      <UniqueIdentifier>{c455ccb8-e889-4f0a-8418-7c04a1c8af6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Math">
+      <UniqueIdentifier>{72e44f16-a91a-430f-8ca3-282661b72648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Math\Form">
+      <UniqueIdentifier>{b4f29590-03d2-40f7-9a7c-752c8a6d3c02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Math\Vector">
+      <UniqueIdentifier>{97c65833-8384-4a7b-a1b3-0b89e4158065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Screen">
+      <UniqueIdentifier>{069a1bdb-6930-4ed9-8cfb-e132c5c2b7e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Text">
+      <UniqueIdentifier>{9ca7773c-a523-40f0-9bd4-4efb5f2ca18d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Button">
+      <UniqueIdentifier>{18022a47-8c44-4c2b-b3e7-6ce3945c6a04}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Math\Form\Form.cpp">
+      <Filter>src\Game\Math\Form</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Math\Vector\Vector.cpp">
+      <Filter>src\Game\Math\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Button\Button.cpp">
+      <Filter>src\Game\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Screen\Screen.cpp">
+      <Filter>src\Game\Screen</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Game\Math\Form\Form.h">
+      <Filter>src\Game\Math\Form</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Math\Vector\Vector.h">
+      <Filter>src\Game\Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Button\Button.h">
+      <Filter>src\Game\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Text\Text.h">
+      <Filter>src\Game\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Screen\Screen.h">
+      <Filter>src\Game\Screen</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
