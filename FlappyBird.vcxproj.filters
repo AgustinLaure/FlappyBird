@@ -25,6 +25,15 @@
     <Filter Include="src\Game\Button">
       <UniqueIdentifier>{18022a47-8c44-4c2b-b3e7-6ce3945c6a04}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\Entities">
+      <UniqueIdentifier>{b3fca124-6a61-4ce7-b6ee-21609d129ecd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Bird">
+      <UniqueIdentifier>{0e34b4da-7be2-4e7e-9708-da979ec19a6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Scene">
+      <UniqueIdentifier>{0785af17-5e72-46a3-8baa-6e25ce4f67f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -45,6 +54,12 @@
     <ClCompile Include="src\Game\Game.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Entities\Bird\Bird.cpp">
+      <Filter>src\Game\Entities\Bird</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameScene\GameScene.cpp">
+      <Filter>src\Game\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Math\Form\Form.h">
@@ -64,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="src\Game\Game.h">
       <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Entities\Bird\Bird.h">
+      <Filter>src\Game\Entities\Bird</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameScene\GameScene.h">
+      <Filter>src\Game\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

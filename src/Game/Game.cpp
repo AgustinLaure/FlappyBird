@@ -3,6 +3,7 @@
 #include "raylib.h"
 
 #include "Screen/Screen.h"
+#include "Game/GameScene/GameScene.h"
 
 namespace game
 {
@@ -15,6 +16,8 @@ namespace game
 	static bool isGameRunning = true;
 	static gameScene currentScene = gameScene::MainMenu;
 
+	static float delta = 0.0f;
+
 	static void game();
 	static void update();
 	static void draw();
@@ -25,6 +28,8 @@ namespace game
 		
 		while (!WindowShouldClose() && isGameRunning)
 		{
+			delta = GetFrameTime();
+
 			update();
 			draw();
 		}
