@@ -34,6 +34,9 @@
     <Filter Include="src\Game\Scene">
       <UniqueIdentifier>{0785af17-5e72-46a3-8baa-6e25ce4f67f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\Entities\Obstacle">
+      <UniqueIdentifier>{75362ad4-454e-4e87-b0e4-a08407811568}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -60,6 +63,9 @@
     <ClCompile Include="src\Game\GameScene\GameScene.cpp">
       <Filter>src\Game\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Entities\Obstacle\Obstacle.cpp">
+      <Filter>src\Game\Entities\Obstacle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Math\Form\Form.h">
@@ -85,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="src\Game\GameScene\GameScene.h">
       <Filter>src\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Entities\Obstacle\Obstacle.h">
+      <Filter>src\Game\Entities\Obstacle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

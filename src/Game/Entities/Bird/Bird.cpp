@@ -14,7 +14,7 @@ namespace bird
 	static const Color birdIniColor = WHITE;
 	static const Vector2 birdHitboxIniPos = { 0.0f, 0.0f };
 	static const float birdHitboxIniRadius = 5.0f;
-	static const Vector2 birdIniVel = { 0,0 };
+	static const Vector2 birdIniVel = { 0.05f,0 };
 
 	static float jumpSpeed = 500.0f;
 
