@@ -9,7 +9,7 @@ namespace screen
 	const int screenWidth = 1024;
 	const int screenHeight = 768;
 
-	std::string windowName = "FlappyBird";
+	const std::string windowName = "FlappyBird";
 	
 	void openWindow();
 	void closeWindow();

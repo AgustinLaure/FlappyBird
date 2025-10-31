@@ -42,6 +42,9 @@
     <ClCompile Include="src\Game\Screen\Screen.cpp">
       <Filter>src\Game\Screen</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Game.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Math\Form\Form.h">
@@ -58,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="src\Game\Screen\Screen.h">
       <Filter>src\Game\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Game.h">
+      <Filter>src\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
