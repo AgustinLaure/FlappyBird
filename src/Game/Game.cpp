@@ -10,8 +10,9 @@ using namespace gameScene;
 namespace game
 {
 	static bool isGameRunning = true;
-	static GameScene currentScene = GameScene::Playing;
 	static float delta = 0.0f;
+
+	gameScene::GameScene currentScene = GameScene::MainMenu;
 
 	static void game();
 
@@ -19,14 +20,14 @@ namespace game
 	{
 		InitWindow(screen::screenWidth, screen::screenHeight, screen::windowName.c_str());
 		
-		while (!WindowShouldClose() && isGameRunning)
+		while (!WindowShouldClose() && currentScene !=GameScene::Exit)
 		{
 			delta = GetFrameTime();
 
 			switch (currentScene)
 			{
 			case gameScene::GameScene::MainMenu:
-				mainMenu::mainMenu();
+				mainMenu::mainMenu(currentScene);
 				break;
 			case gameScene::GameScene::Playing:
 				playing::playing(delta, currentScene);

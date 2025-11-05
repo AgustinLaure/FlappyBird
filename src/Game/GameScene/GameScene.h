@@ -5,12 +5,13 @@ namespace gameScene
 	enum class GameScene
 	{
 		MainMenu,
-		Playing
+		Playing,
+		Exit
 	};
 
 	namespace mainMenu
 	{
-		void mainMenu();
+		void mainMenu(GameScene& currentScene);
 	}
 
 	namespace playing

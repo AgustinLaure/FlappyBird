@@ -18,9 +18,9 @@ namespace bird
 	static const float birdHitboxIniRadius = 5.0f;
 	static const Vector2 birdIniDir = { 0.05f,0 };
 
-	static float jumpSpeed = -500.0f;
-
 	static void move(Bird& bird, float delta);
+
+	static float jumpSpeed = -500.0f;
 
 	static void move(Bird& bird, float delta)
 	{

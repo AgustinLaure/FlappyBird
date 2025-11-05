@@ -6,19 +6,23 @@ namespace button
 
 	Sound Button::onSelect;
 
-	void init(Button& button,float width, float height, Vector2 pos, std::string text, float fontSize, float spacing, Color textColor, Color bckgColor)
+	Button init(float width, float height, Vector2 pos, std::string text, float fontSize, float spacing, Color textColor, Color bckgColor)
 	{
+		Button newButton;
+
 		Button::onSelect = LoadSound("res/sound/sfx/ui/selectSound.ogg");
-		button.body.width = width;
-		button.body.height = height;
-		button.body.pos = pos;
-		button.text.pos = button.body.pos;
-		button.text.text = text;
-		button.text.fontSize = fontSize;
-		button.text.spacing = spacing;
-		button.text.color = textColor;
-		button.color = bckgColor;
-		button.isPressed = false;
+		newButton.body.width = width;
+		newButton.body.height = height;
+		newButton.body.pos = pos;
+		newButton.text.pos = newButton.body.pos;
+		newButton.text.text = text;
+		newButton.text.fontSize = fontSize;
+		newButton.text.spacing = spacing;
+		newButton.text.color = textColor;
+		newButton.color = bckgColor;
+		newButton.isPressed = false;
+
+		return newButton;
 	}
 
 	void update(Button& button)
@@ -37,6 +41,7 @@ namespace button
 
 	void draw(Button button)
 	{
+		DrawRectangle(int(button.body.pos.x), int(button.body.pos.y), int(button.body.width), int(button.body.height), button.color);
 		DrawTextEx(GetFontDefault(), button.text.text.c_str(), button.text.pos, button.text.fontSize, button.text.spacing, button.text.color);
 	}
 }
