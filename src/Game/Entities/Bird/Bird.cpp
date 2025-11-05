@@ -7,6 +7,7 @@
 
 namespace bird
 {
+	static const float ceilingOffset = 0.01f;
 
 	static const float birdSpeed = 300.0f;
 	static const float birdFallSpeed = 150000.0f;
@@ -78,12 +79,14 @@ namespace bird
 
 	void outBounds(Bird& bird)
 	{
-		if (bird.hitbox.pos.x >= screen::screenWidth)
+		if (bird.hitbox.pos.y >= screen::screenHeight)
 		{
-			if (bird.hitbox.pos.x >= screen::screenWidth)
-			{
-				bird.hitbox.pos.x = 0;
-			}
+			bird.hasLost = true;
+		}
+		else if (bird.hitbox.pos.y <= 0.0f)
+		{
+			bird.hitbox.pos.y = 0.f + ceilingOffset;
+			bird.velocity.y = 0.0f;
 		}
 	}
 }
