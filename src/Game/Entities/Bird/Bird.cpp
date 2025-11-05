@@ -9,32 +9,39 @@ namespace bird
 {
 
 	static const float birdSpeed = 300.0f;
-	static const float birdFallSpeed = 0.3f;
-	static const float birdFallSpeedCap = 1.0f;
-	static const KeyboardKey jumpButton = KEY_SPACE;
+	static const float birdFallSpeed = 150000.0f;
+	static const float birdFallSpeedCap = 1200.0f;
+	static const KeyboardKey jumpKey = KEY_SPACE;
 	static const Color birdIniColor = WHITE;
 	static const Vector2 birdHitboxIniPos = { 0.0f, 0.0f };
 	static const float birdHitboxIniRadius = 5.0f;
 	static const Vector2 birdIniDir = { 0.05f,0 };
 
-	static float jumpSpeed = 500.0f;
+	static float jumpSpeed = -500.0f;
 
 	static void move(Bird& bird, float delta);
 
 	static void move(Bird& bird, float delta)
 	{
-		bird.velocity = birdIniDir;
-
-		if (IsKeyDown(KEY_W))
+		if (bird.velocity.y < birdFallSpeedCap)
 		{
-			bird.velocity.y = -1 * birdSpeed * delta;
-		}
-		if (IsKeyDown(KEY_S))
-		{
-			bird.velocity.y = 1 * birdSpeed * delta;
+			float toAdd = birdFallSpeed;
+
+			if (toAdd > birdFallSpeedCap)
+			{
+				toAdd = birdFallSpeedCap;
+			}
+
+			bird.velocity.y += toAdd * delta;
 		}
 
-		bird.hitbox.pos = vector::getVectorSum(bird.hitbox.pos, bird.velocity);
+		if (IsKeyPressed(jumpKey))
+		{
+			bird.velocity.y = 0;
+			bird.velocity.y = jumpSpeed;
+		}
+
+		bird.hitbox.pos = vector::getVectorSum(bird.hitbox.pos, vector::getVectorMult(bird.velocity, delta));
 
 		outBounds(bird);
 	}
