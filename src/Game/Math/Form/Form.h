@@ -19,5 +19,7 @@ namespace form
 
 	bool isCircleCollidingCircle(Circle c1, Circle c2);
 	bool isPointCollidingRect(Vector2 p, Rectangle rect);
+	Vector2 centerToTopLeft(Rectangle rect);
+	bool isRectColCircle(Rectangle rect, Circle circ);
 }
 

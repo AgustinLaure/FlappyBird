@@ -29,7 +29,7 @@ namespace game
 				mainMenu::mainMenu();
 				break;
 			case gameScene::GameScene::Playing:
-				playing::playing(delta);
+				playing::playing(delta, currentScene);
 				break;
 			default:
 				break;

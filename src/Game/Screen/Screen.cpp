@@ -15,9 +15,4 @@ namespace screen
 	{
 		CloseWindow();
 	}
-
-	bool isOutScreen(Vector2 pos)
-	{
-		return pos.x < 0 || pos.x > screenWidth || pos.y < 0 || pos.y > screenHeight;
-	}
 }

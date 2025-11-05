@@ -15,7 +15,7 @@ namespace bird
 	static const Color birdIniColor = WHITE;
 	static const Vector2 birdHitboxIniPos = { 0.0f, 0.0f };
 	static const float birdHitboxIniRadius = 5.0f;
-	static const Vector2 birdIniVel = { 0.05f,0 };
+	static const Vector2 birdIniDir = { 0.05f,0 };
 
 	static float jumpSpeed = 500.0f;
 
@@ -23,7 +23,7 @@ namespace bird
 
 	static void move(Bird& bird, float delta)
 	{
-		bird.velocity = birdIniVel;
+		bird.velocity = birdIniDir;
 
 		if (IsKeyDown(KEY_W))
 		{
@@ -46,9 +46,17 @@ namespace bird
 		bird.hitbox.pos = birdHitboxIniPos;
 		bird.hitbox.radius = birdHitboxIniRadius;
 		bird.color = birdIniColor;
-		bird.velocity = birdIniVel;
+		bird.velocity = {};
+		bird.hasLost = false;
 
 		return bird;
+	}
+
+	void reset(Bird& bird)
+	{
+		bird.hitbox.pos = birdHitboxIniPos;
+		bird.velocity = {};
+		bird.hasLost = false;
 	}
 
 	void update(Bird& bird, float delta)
@@ -63,7 +71,7 @@ namespace bird
 
 	void outBounds(Bird& bird)
 	{
-		if (screen::isOutScreen(bird.hitbox.pos))
+		if (bird.hitbox.pos.x >= screen::screenWidth)
 		{
 			if (bird.hitbox.pos.x >= screen::screenWidth)
 			{

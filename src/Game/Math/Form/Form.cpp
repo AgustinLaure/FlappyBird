@@ -16,6 +16,48 @@ namespace form
 	bool isPointCollidingRect(Vector2 p, Rectangle rect)
 	{
 		return p.x <= rect.pos.x + rect.width && p.x >= rect.pos.x &&
-				p.y <= rect.pos.y + rect.height && p.y >= rect.pos.y;
+			p.y <= rect.pos.y + rect.height && p.y >= rect.pos.y;
+	}
+
+	Vector2 centerToTopLeft(Rectangle rect)
+	{
+		Vector2 topLeftPos = {};
+		topLeftPos.x = rect.pos.x - rect.width / 2;
+		topLeftPos.y = rect.pos.y - rect.height / 2;
+
+		return topLeftPos;
+	}
+
+	bool isRectColCircle(Rectangle rect, Circle circ)
+	{
+		Vector2 closestPoint = {};
+
+		if (circ.pos.x < rect.pos.x - rect.width/2)
+		{
+			closestPoint.x = rect.pos.x - rect.width/2;
+		}
+		else if (circ.pos.x > rect.pos.x + rect.width/2)
+		{
+			closestPoint.x = rect.pos.x + rect.width / 2;
+		}
+		else
+		{
+			closestPoint.x = circ.pos.x;
+		}
+
+		if (circ.pos.y <= rect.pos.y-rect.height/2)
+		{
+			closestPoint.y = rect.pos.y - rect.height / 2;
+		}
+		else if (circ.pos.y >= rect.pos.y + rect.height/2)
+		{
+			closestPoint.y = rect.pos.y + rect.height / 2;
+		}
+		else
+		{
+			closestPoint.y = circ.pos.y;
+		}
+
+		return (closestPoint.x - circ.pos.x) * (closestPoint.x - circ.pos.x) + (closestPoint.y - circ.pos.y) * (closestPoint.y - circ.pos.y) <= (circ.radius * circ.radius);
 	}
 }

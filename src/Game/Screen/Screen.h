@@ -13,6 +13,5 @@ namespace screen
 	
 	void openWindow();
 	void closeWindow();
-	bool isOutScreen(Vector2 pos);
 }
 

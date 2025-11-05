@@ -1,6 +1,8 @@
 #include "Game/GameScene/GameScene.h"
 
 #include "Game/Entities/Bird/Bird.h"
+#include "Game/Entities/Obstacle/Obstacle.h"
+#include "Game/Screen/Screen.h"
 
 namespace gameScene
 {
@@ -33,15 +35,33 @@ namespace gameScene
 
 	namespace playing
 	{
-		static bird::Bird bird = bird::init();
-		static const Color bckgColor = BLACK;
-		
-		static void update(float delta);
+		static void update(float delta, GameScene& currentScene);
 		static void draw();
+		static void resetGame();
 
-		static void update(float delta)
+		namespace lost
 		{
-			bird::update(bird, delta);
+			static void update(GameScene& currentScene);
+			static void draw();
+		}
+
+		//Entitites
+		static bird::Bird bird = bird::init();
+		static obstacle::Obstacle obstacle = obstacle::init(100.0f, 150.0f, { screen::screenWidth,screen::screenHeight / 2 }, WHITE);
+
+		static const Color bckgColor = BLACK;
+
+		static void update(float delta, GameScene& currentScene)
+		{
+			if (!bird.hasLost)
+			{
+				bird::update(bird, delta);
+				obstacle::update(obstacle, bird, delta);
+			}
+			else
+			{
+				lost::update(currentScene);
+			}
 		}
 
 		static void draw()
@@ -49,15 +69,52 @@ namespace gameScene
 			BeginDrawing();
 			ClearBackground(bckgColor);
 
-			bird::draw(bird);
+			if (!bird.hasLost)
+			{
+				bird::draw(bird);
+				obstacle::draw(obstacle);
+			}
+			else
+			{
+				lost::draw();
+			}
+
+			DrawText("V0.1", screen::screenWidth-100, screen::screenHeight-100, 25, WHITE);
 
 			EndDrawing();
 		}
 
-		void playing(float delta)
+		void playing(float delta, GameScene& currentScene)
 		{
-			update(delta);
+			update(delta, currentScene);
 			draw();
+		}
+
+		static void resetGame()
+		{
+			bird::reset(bird);
+			obstacle::reset(obstacle);
+		}
+
+		namespace lost
+		{
+			static void update(GameScene& currentScene)
+			{
+				if (IsKeyDown(KEY_R))
+				{
+					resetGame();
+				}
+
+				if (IsKeyDown(KEY_E))
+				{
+					currentScene = GameScene::MainMenu;
+				}
+			}
+
+			static void draw()
+			{
+				DrawText("R para reiniciar, E para salir al menu(vacio)", screen::screenWidth / 2, screen::screenHeight / 2, 20, WHITE);
+			}
 		}
 	}
 }

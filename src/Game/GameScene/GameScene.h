@@ -15,7 +15,7 @@ namespace gameScene
 
 	namespace playing
 	{
-		void playing(float delta);
+		void playing(float delta, GameScene& currentScene);
 	}
 }
 
