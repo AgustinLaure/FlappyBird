@@ -17,4 +17,5 @@ namespace bird
 	Bird init();
 	void update(Bird& bird, float delta);
 	void draw(Bird bird);
+	void outBounds(Bird& bird);
 }

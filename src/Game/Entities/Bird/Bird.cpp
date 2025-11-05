@@ -3,6 +3,7 @@
 #include "raylib.h"
 
 #include "Game/Math/Vector/Vector.h"
+#include "Game/Screen/Screen.h"
 
 namespace bird
 {
@@ -22,18 +23,20 @@ namespace bird
 
 	static void move(Bird& bird, float delta)
 	{
-		if (bird.velocity.y < birdFallSpeedCap)
-		{
-			bird.velocity = vector::getVectorSum(bird.velocity, { 0, birdFallSpeed * delta });
-		}
+		bird.velocity = birdIniVel;
 
-		if (IsKeyPressed(jumpButton))
+		if (IsKeyDown(KEY_W))
 		{
-			bird.velocity.y = 0;
-			bird.velocity.y -= jumpSpeed * delta;
+			bird.velocity.y = -1 * birdSpeed * delta;
+		}
+		if (IsKeyDown(KEY_S))
+		{
+			bird.velocity.y = 1 * birdSpeed * delta;
 		}
 
 		bird.hitbox.pos = vector::getVectorSum(bird.hitbox.pos, bird.velocity);
+
+		outBounds(bird);
 	}
 
 	Bird init()
@@ -56,5 +59,16 @@ namespace bird
 	void draw(Bird bird)
 	{
 		DrawCircle(static_cast<int>(bird.hitbox.pos.x), static_cast<int>(bird.hitbox.pos.y), bird.hitbox.radius, bird.color);
+	}
+
+	void outBounds(Bird& bird)
+	{
+		if (screen::isOutScreen(bird.hitbox.pos))
+		{
+			if (bird.hitbox.pos.x >= screen::screenWidth)
+			{
+				bird.hitbox.pos.x = 0;
+			}
+		}
 	}
 }
