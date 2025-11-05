@@ -47,7 +47,7 @@ namespace gameScene
 
 		//Entitites
 		static bird::Bird bird = bird::init();
-		static obstacle::Obstacle obstacle = obstacle::init(100.0f, 150.0f, { screen::screenWidth,screen::screenHeight / 2 }, WHITE);
+		static obstacle::Obstacle obstacle = obstacle::init(100.0f, 3000.0f, { screen::screenWidth,screen::screenHeight / 2 }, WHITE);
 
 		static const Color bckgColor = BLACK;
 

@@ -5,8 +5,9 @@
 
 namespace obstacle
 {
-	const Vector2 obstacleIniDir = { -0.05f, 0.0f };
-	const float obstacleIniSpeed = 3400.0f;
+	const Vector2 obstacleIniDir = { -1, 0.0f };
+	const float obstacleIniSpeed = 340.0f;
+	const float distanceBetweenParts = 1590.0f;
 
 	static void move(Obstacle& obstacle, float delta);
 	static void outBounds(Obstacle& obstacle);
@@ -16,9 +17,18 @@ namespace obstacle
 	{
 		Obstacle obstacle;
 		obstacle.iniPos = pos;
-		obstacle.hitbox.width = width;
-		obstacle.hitbox.height = height;
-		obstacle.hitbox.pos = pos;
+		obstacle.pos = pos;
+
+		obstacle.upperHitbox.width = width;
+		obstacle.upperHitbox.height = height;
+		obstacle.upperHitbox.pos = obstacle.pos;
+		obstacle.upperHitbox.pos.y -= distanceBetweenParts;
+
+		obstacle.lowerHitBox.width = width;
+		obstacle.lowerHitBox.height = height;
+		obstacle.lowerHitBox.pos = obstacle.pos;
+		obstacle.lowerHitBox.pos.y += distanceBetweenParts;
+
 		obstacle.color = color;
 
 		return obstacle;
@@ -26,7 +36,10 @@ namespace obstacle
 
 	void reset(Obstacle& obstacle)
 	{
-		obstacle.hitbox.pos = obstacle.iniPos;
+		obstacle.pos = obstacle.iniPos;
+		obstacle.upperHitbox.pos = { obstacle.pos.x, obstacle.pos.y-distanceBetweenParts };
+		obstacle.lowerHitBox.pos = { obstacle.pos.x, obstacle.pos.y+distanceBetweenParts };
+		obstacle.velocity = {};
 	}
 
 	void update(Obstacle& obstacle, bird::Bird& bird, float delta)
@@ -37,12 +50,21 @@ namespace obstacle
 
 	void draw(Obstacle obstacle)
 	{
-		Vector2 drawPos = form::centerToTopLeft(obstacle.hitbox);
+		Vector2 drawPos = form::centerToTopLeft(obstacle.upperHitbox);
 
 		int intPosX = static_cast<int>(drawPos.x);
 		int intPosY = static_cast<int>(drawPos.y);
-		int intWidth = static_cast<int>(obstacle.hitbox.width);
-		int intHeight = static_cast<int>(obstacle.hitbox.height);
+		int intWidth = static_cast<int>(obstacle.upperHitbox.width);
+		int intHeight = static_cast<int>(obstacle.upperHitbox.height);
+
+		DrawRectangle(intPosX, intPosY, intWidth, intHeight, obstacle.color);
+
+		drawPos = form::centerToTopLeft(obstacle.lowerHitBox);
+
+		intPosX = static_cast<int>(drawPos.x);
+		intPosY = static_cast<int>(drawPos.y);
+		intWidth = static_cast<int>(obstacle.lowerHitBox.width);
+		intHeight = static_cast<int>(obstacle.lowerHitBox.height);
 
 		DrawRectangle(intPosX, intPosY, intWidth, intHeight, obstacle.color);
 	}
@@ -51,24 +73,32 @@ namespace obstacle
 	{
 		obstacle.velocity = vector::getVectorMult(obstacleIniDir, obstacleIniSpeed *delta);
 
-		obstacle.hitbox.pos = vector::getVectorSum(obstacle.hitbox.pos, obstacle.velocity);
+		obstacle.pos = vector::getVectorSum(obstacle.pos, obstacle.velocity);
 
+		obstacle.upperHitbox.pos = { obstacle.pos.x, obstacle.pos.y - distanceBetweenParts };
+		obstacle.lowerHitBox.pos = { obstacle.pos.x, obstacle.pos.y + distanceBetweenParts };
+		
 		outBounds(obstacle);
 	}
 
 	static void outBounds(Obstacle& obstacle)
 	{
-		if (obstacle.hitbox.pos.x <= 0)
+		if (obstacle.pos.x <= 0)
 		{
-			obstacle.hitbox.pos.x = screen::screenWidth;
+			obstacle.pos.x = screen::screenWidth;
 
-			obstacle.hitbox.pos.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screen::screenHeight)));
+			obstacle.pos.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screen::screenHeight)));
 		}
 	}
 
 	static void hitBird(Obstacle obstacle, bird::Bird& bird)
 	{
-		if (form::isRectColCircle(obstacle.hitbox, bird.hitbox))
+		if (form::isRectColCircle(obstacle.upperHitbox, bird.hitbox))
+		{
+			bird.hasLost = true;
+		}
+
+		if (form::isRectColCircle(obstacle.lowerHitBox, bird.hitbox))
 		{
 			bird.hasLost = true;
 		}

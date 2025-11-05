@@ -10,12 +10,13 @@ namespace obstacle
 	struct Obstacle
 	{
 		Vector2 iniPos = {};
-		form::Rectangle hitbox;
+		Vector2 pos = {};
+		form::Rectangle upperHitbox;
+		form::Rectangle lowerHitBox;
 		Color color = {};
 		Vector2 velocity = {};
 	};
 
-		
 	Obstacle init(float width, float height, Vector2 pos, Color color);
 	void reset(Obstacle& obstacle);
 	void update(Obstacle& obstacle, bird::Bird& bird, float delta);
