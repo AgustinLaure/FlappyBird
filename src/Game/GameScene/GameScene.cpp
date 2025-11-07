@@ -4,6 +4,7 @@
 #include "Game/Entities/Obstacle/Obstacle.h"
 #include "Game/Screen/Screen.h"
 #include "Game/Button/Button.h"
+#include "Game/Entities/Background/Background.h"
 
 namespace gameScene
 {
@@ -315,6 +316,7 @@ false								//isPressed
 		//Entitites
 		static bird::Bird bird = bird::init();
 		static obstacle::Obstacle obstacle = obstacle::init(100.0f, 3000.0f, { screen::screenWidth,screen::screenHeight / 2 }, WHITE);
+		static background::BackgroundElement background[background::backgroundElements] = {};
 
 		static const Color bckgColor = BLACK;
 
@@ -324,6 +326,7 @@ false								//isPressed
 			{
 				bird::update(bird, delta);
 				obstacle::update(obstacle, bird, delta);
+				background::update(background, delta);
 			}
 			else
 			{
@@ -338,6 +341,7 @@ false								//isPressed
 
 			if (!bird.hasLost)
 			{
+				background::draw(background);
 				bird::draw(bird);
 				obstacle::draw(obstacle);
 			}
@@ -347,6 +351,14 @@ false								//isPressed
 			}
 
 			EndDrawing();
+		}
+
+		void init()
+		{
+			for (int i = 0; i < background::backgroundElements; i++)
+			{
+				background[i] = background::initBackground(i);
+			}
 		}
 
 		void playing(float delta, GameScene& currentScene)
@@ -359,6 +371,7 @@ false								//isPressed
 		{
 			bird::reset(bird);
 			obstacle::reset(obstacle);
+			background::reset(background);
 		}
 
 		namespace lost

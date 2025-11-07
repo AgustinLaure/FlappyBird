@@ -37,6 +37,24 @@
     <Filter Include="src\Game\Entities\Obstacle">
       <UniqueIdentifier>{75362ad4-454e-4e87-b0e4-a08407811568}</UniqueIdentifier>
     </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{009374dc-53fd-4299-9301-1e6f2cb18006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\Sprites">
+      <UniqueIdentifier>{12a2b516-3255-4aa9-93c6-98e2b078158d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\Sprites\Background">
+      <UniqueIdentifier>{ba4c910a-6851-4d32-b339-4188e7c7209c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\Sprites\Background\City">
+      <UniqueIdentifier>{951e37bc-d26a-40d0-b1af-5b3091fccf9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Entities\Background">
+      <UniqueIdentifier>{e18d0a88-6b81-406a-81e9-8fc36acdbdb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Sprite">
+      <UniqueIdentifier>{046393f6-f591-46c0-9e5d-8fa1dffe3ab5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -65,6 +83,12 @@
     </ClCompile>
     <ClCompile Include="src\Game\Entities\Obstacle\Obstacle.cpp">
       <Filter>src\Game\Entities\Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Entities\Background\Background.cpp">
+      <Filter>src\Game\Entities\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Sprite\Sprite.cpp">
+      <Filter>src\Game\Sprite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,5 +119,22 @@
     <ClInclude Include="src\Game\Entities\Obstacle\Obstacle.h">
       <Filter>src\Game\Entities\Obstacle</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Entities\Background\Background.h">
+      <Filter>src\Game\Entities\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Sprite\Sprite.h">
+      <Filter>src\Game\Sprite</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Sprites\Background\City\cyberpunk_street_background.png">
+      <Filter>res\Sprites\Background\City</Filter>
+    </Image>
+    <Image Include="res\Sprites\Background\City\cyberpunk_street_foreground.png">
+      <Filter>res\Sprites\Background\City</Filter>
+    </Image>
+    <Image Include="res\Sprites\Background\City\cyberpunk_street_midground.png">
+      <Filter>res\Sprites\Background\City</Filter>
+    </Image>
   </ItemGroup>
 </Project>

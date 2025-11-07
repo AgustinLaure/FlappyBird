@@ -19,6 +19,7 @@ namespace game
 	static void game()
 	{
 		InitWindow(screen::screenWidth, screen::screenHeight, screen::windowName.c_str());
+		playing::init();
 		
 		while (!WindowShouldClose() && currentScene !=GameScene::Exit)
 		{
