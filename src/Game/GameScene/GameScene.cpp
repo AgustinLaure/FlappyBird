@@ -252,7 +252,7 @@ false								//isPressed
 			ClearBackground(bckgColor);
 
 			drawButtons();
-			DrawText("V0.2", screen::screenWidth - 100, screen::screenHeight - 100, 25, WHITE);
+			DrawText("V0.3", screen::screenWidth - 100, screen::screenHeight - 100, 25, WHITE);
 
 			EndDrawing();
 		}
