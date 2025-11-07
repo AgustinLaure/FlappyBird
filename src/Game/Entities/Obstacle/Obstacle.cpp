@@ -87,7 +87,7 @@ namespace obstacle
 		{
 			obstacle.pos.x = screen::screenWidth;
 
-			obstacle.pos.y = static_cast<float>(GetRandomValue(0, static_cast<int>(screen::screenHeight)));
+			obstacle.pos.y = static_cast<float>(GetRandomValue(static_cast<int>(distanceBetweenParts/2), static_cast<int>(screen::screenHeight - distanceBetweenParts / 2)));
 		}
 	}
 

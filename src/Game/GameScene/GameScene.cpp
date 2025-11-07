@@ -49,11 +49,11 @@ namespace gameScene
 			{
 				//Line1
 {
-	{425, 350},								//Pos
-	"Agustin Laure",						//Text
-	25.0f,									//FontSize
-	2.0f,									//Spacing
-	WHITE									//Color
+				{425, 350},								//Pos
+				"Agustin Laure",						//Text
+				25.0f,									//FontSize
+				2.0f,									//Spacing
+				WHITE									//Color
 }
 			};
 
